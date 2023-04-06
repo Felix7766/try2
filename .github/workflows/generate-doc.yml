@@ -1,0 +1,25 @@
+name: Generate Docs
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Microsoft Office
+      uses: microsoft/setup-office@v1
+
+    - name: Generate Word Doc
+      run: powershell -ExecutionPolicy Bypass -File ./generate-doc.ps1
+
+    - name: Upload Word Doc
+      uses: actions/upload-artifact@v2
+      with:
+        name: hello-world-docx
+        path: docs/hello-world.docx
