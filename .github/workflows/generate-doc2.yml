@@ -1,0 +1,10 @@
+- name: Install Microsoft Office
+  uses: microsoft/setup-office@v1
+  with:
+    version: '16.x'
+    level: 'Insiders'
+    channel: 'PerpetualVL2019'
+    acceptEula: true
+  env:
+    CLIENT_ID: ${{ secrets.CLIENT_ID }}
+    CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
